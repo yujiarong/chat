@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('/dashboard');
-});
+// Route::get('/', function () {
+//     return redirect('/dashboard');
+// });
 
 Route::group([
     'prefix'     => 'socialite',
@@ -25,7 +25,11 @@ Route::group([
 });
 
 Auth::routes();
+Route::get('/chat', 'HomeController@chat')->name('chat');
+Route::get('/aichat', 'HomeController@aichat')->name('aichat');
+Route::post('/chat_login', 'Auth\ChatLoginController@registerLogin')->name('chat.login');
 Route::group(['middleware' => 'auth' ], function() {
+	Route::get('/', 'HomeController@index')->name('/');
 	Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 	includeRouteFiles(__DIR__.DIRECTORY_SEPARATOR.'Backend'.DIRECTORY_SEPARATOR);
 });

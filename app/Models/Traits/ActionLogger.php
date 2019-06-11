@@ -17,7 +17,7 @@ trait ActionLogger
 
 	protected static function getModelEvents()
 	{
-		return static::$recordEvents ?? ['created','updated','deleted'];
+		return  ['created','updated','deleted'];
 	}
 
 

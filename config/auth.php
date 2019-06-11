@@ -45,6 +45,10 @@ return [
             'driver' => 'passport',
             'provider' => 'users',
         ],
+        'chat' => [
+            'driver' => 'session',
+            'provider' => 'chats',
+        ],
     ],
 
     /*
@@ -70,10 +74,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'chats' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ChatUser::class,
+        ],
     ],
 
     /*

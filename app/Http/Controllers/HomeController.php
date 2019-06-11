@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Services\AIChatService;
+use App\Exceptions\InvalidRequestException;
 class HomeController extends Controller
 {
     /**
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['chat','aichat']);;
     }
 
     /**
@@ -24,5 +25,19 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function chat(){
+        return view('index');
+    }
+
+    public function aichat(Request $request){
+        $content = $request->get('content');
+        if(empty($content)){
+            dd('请输入有效的content字段');
+        }
+        $aichat  = new AIChatService;
+        $data    = $aichat->IAChat($content);
+        dd($data);
     }
 }

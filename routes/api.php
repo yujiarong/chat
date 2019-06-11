@@ -19,3 +19,4 @@ use Illuminate\Http\Request;
 // 	    return $request->user();
 // 	});
 // });
+Route::get('/getData', 'TestController@getData')->name('test.getData');

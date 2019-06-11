@@ -1,8 +1,5 @@
 @extends('layouts.main')
 @section('content')
-<!-- <div id="page-head">
-    111111111111
-</div> -->
 
                 <div id="page-content">
                     
