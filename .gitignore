@@ -6,6 +6,8 @@
 /vendor
 /.idea
 /.vagrant
+/storage/laravels.*
+/bin
 Homestead.json
 Homestead.yaml
 npm-debug.log
