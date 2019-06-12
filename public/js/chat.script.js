@@ -71,7 +71,7 @@ var chat = {
 		chat.data.fd = '';
 		chat.data.name = '';
 		chat.data.avatar = '';
-		location.reload() ;
+		document.getElementById('logout-form').submit();
 	},
 	keySend : function( event ){
 		if (event.ctrlKey && event.keyCode == 13) {
