@@ -42,7 +42,7 @@ return [
     'swoole_tables'            => [
         //定义登陆用户的信息
         'ws_users'          =>[
-            'size'   => 102400,//Table的最大行数
+            'size'   => 1024,//Table的最大行数
             'column' => [// Table的列定义$roomid,$fd,$name,$email,$avatar
                 ['name' => 'roomid', 'type' => \swoole_table::TYPE_STRING, 'size' => 8],
                 ['name' => 'fd', 'type' => \swoole_table::TYPE_INT, 'size' => 8],
@@ -53,13 +53,13 @@ return [
             ]
         ],
         'ws_rooms'=>[
-            'size'   => 102400,//Table的最大行数
+            'size'   => 1024,//Table的最大行数
             'column' => [// Table的列定义$roomid,$fd,$name,$email,$avatar
                 ['name' => 'users', 'type' => \swoole_table::TYPE_STRING, 'size' => 1024],
             ]
         ],
         'ws_roomUsers'=>[
-            'size'   => 102400,//Table的最大行数
+            'size'   => 1024,//Table的最大行数
             'column' => [// Table的列定义$roomid,$fd,$name,$email,$avatar
                 ['name' => 'infos', 'type' => \swoole_table::TYPE_STRING, 'size' => 1024],
             ]

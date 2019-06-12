@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
     <title>公共聊天室-基于swoole扩展php开发</title>
-    <meta name="description" content="梦的起飞，公共聊天室，聊天室基于swoole扩展、PHP开发，。赶快加入，聊天、交友。">
-    <meta name="keywords" content="聊天室，公共聊天室，梦的起飞，swoole，扩展，PHP开发">
+    <meta name="description" content="swoole 聊天室">
+    <meta name="keywords" content="swoole 聊天室">
     <link media="all" href="{{asset('css/style.css?v=2232')}}" type="text/css" rel="stylesheet">
     <link media="all" href="{{asset('css/shake.css?v=2222')}}" type="text/css" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -20,6 +20,9 @@
     </div>
     <div id="layout-main">
         <div id="header">
+            <form id="logout-form" action="{{ route('chat.logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
             <div style="float: right;margin: 17px 15px 4px 0px;">
                 <div title="退出" class="iconfont" onclick="chat.logout()" style="height: 26px;width: 26px;color: #EDF7FF;font-size: 26px;line-height: 26px;cursor: pointer;"></div>
             </div>

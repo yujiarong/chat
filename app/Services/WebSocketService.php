@@ -137,7 +137,7 @@ class WebSocketService implements WebSocketHandlerInterface
 
     public function aichat($data){
         $domain  = config('chat.domain');
-        $content = $data['message'];
+        list(,$content) =  preg_split("/[\s]+/", $data['message']);
         if(empty($content)){
             $content = '你好';
         }
@@ -156,7 +156,7 @@ class WebSocketService implements WebSocketHandlerInterface
         );       
         $task = new ChatTask(json_encode($data));
         $ret = Task::deliver($task);
-        echo "小爱同学发了消息{$message}\n";
+        echo "对于{$content}小爱同学回复了消息{$message}\n";
     }
 
 }
