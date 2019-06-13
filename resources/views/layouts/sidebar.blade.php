@@ -93,7 +93,7 @@
                                     </li>
                         
                                     <!--Menu list item-->
-                                    <li>
+                                    <li class="{{ active_class(Active::checkUriPattern('chat/*'),'active-sub active' ) }}">
                                         <a href="#">
                                             <i class="demo-pli-split-vertical-2"></i>
                                             <span class="menu-title">Chat</span>
