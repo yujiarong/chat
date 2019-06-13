@@ -101,6 +101,7 @@ $(document).ready(function(){
     @if( Auth::guard('chat')->user() )
         window.localStorage.dologin = 1;
         window.localStorage.name = '{{ Auth::guard('chat')->user()->name}}';
+        window.localStorage.avatar = '{{ Auth::guard('chat')->user()->avatar}}';
     @endif
 });    
 </script> 

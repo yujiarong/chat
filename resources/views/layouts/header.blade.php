@@ -7,7 +7,7 @@
                     <a href="/" class="navbar-brand">
                         <img src="/nifty/img/logo.png" alt="Nifty Logo" class="brand-icon">
                         <div class="brand-title">
-                            <span class="brand-text">Nifty</span>
+                            <span class="brand-text">聊天室后台</span>
                         </div>
                     </a>
                 </div>

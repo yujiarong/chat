@@ -13,7 +13,6 @@ use App\ChatTask\ChatTask;
 use Swoole\Http\Request;
 use Swoole\WebSocket\Frame;
 use Swoole\WebSocket\Server;
-use Seven;
 use App\Services\AIChatService;
 
 /**
@@ -46,14 +45,12 @@ class WebSocketService implements WebSocketHandlerInterface
                 $data = array(
                     'task' => 'login',
                     'params' => array(
-                        'name' => $data['name']
+                        'name'   => $data['name'],
+                        'avatar' => $data['avatar']
                     ),
                     'fd' => $frame->fd,
                     'roomid' =>$data['roomid']
                 );
-                if(!$data['params']['name']  ){
-                    $data['task'] = "nologin";
-                }
                 $task = new ChatTask(json_encode($data));
                 $ret = Task::deliver($task);
                 echo $frame->fd."登陆\n";

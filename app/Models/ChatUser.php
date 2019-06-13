@@ -18,7 +18,7 @@ class ChatUser extends Authenticatable
         'name', 'email', 'password',
     ];
 
-     protected $table = 'chat_users';
+    protected $table = 'chat_users';
 
     /**
      * The attributes that should be hidden for arrays.

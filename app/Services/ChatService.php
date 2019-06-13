@@ -7,6 +7,7 @@
  */
 namespace App\Services;
 use App\Services\ChatUsersService;
+use App\Models\ChatRoom;
 
 class ChatService
 {
@@ -33,18 +34,25 @@ class ChatService
         return $pushMsg;
     }
 
-    //获取房间
     public static function getRooms(){
-        $rooms = config('chat.rooms');
-        $roomss = array();
-        foreach($rooms as $_k => $_v){
+        $rooms   = config('chat.rooms');//初始房间
+        $data    = ChatRoom::select('id','name')->orderBy('id')->get();
+        $roomss  = [];
+        foreach($rooms as $k => $v){
             $roomss[] = array(
-                'roomid'   => $_k,
-                'roomname' => $_v
+                'roomid'   => $k,
+                'roomname' => $v
+            );
+        } 
+        foreach ($data as $v) {
+            $roomss[] = array(
+                'roomid'   => $v->id,
+                'roomname' => $v->name,
             );
         }
         return $roomss;
     }
+
 
     /**
      * @return array|mixed
@@ -66,7 +74,7 @@ class ChatService
         $pushMsg['data']['roomid'] = $data['roomid'];
         $pushMsg['data']['fd'] = $data['fd'];
         $pushMsg['data']['name'] = $data['params']['name'];
-        $pushMsg['data']['avatar'] = $domain.'images/avatar/f1/f_'.rand(1,12).'.jpg';
+        $pushMsg['data']['avatar'] = $domain.$data['params']['avatar'];
         $pushMsg['data']['time'] = date("H:i",time());
         //增加房间的名字
         $pushMsg['data']['roomname'] = config('chat.rooms')[$data['roomid']];
@@ -82,10 +90,6 @@ class ChatService
             $name = '游客'.time();
         }
 
-        if(!$name ){
-
-            throw new Exception('Fill in all the required fields.');
-        }
         $user = new ChatUsersService(array(
             'roomid'    => $roomid,
             'fd'        => $fd,

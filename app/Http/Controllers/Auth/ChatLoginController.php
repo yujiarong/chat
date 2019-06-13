@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Models\ChatUser;
+use Illuminate\Support\Facades\Auth;
 
 class ChatLoginController extends Controller
 {
@@ -43,7 +44,7 @@ class ChatLoginController extends Controller
         $name     = $request->get('name');
         $password = $request->get('password');
         if(!ChatUser::where('name',$name)->count() ){
-            $this->store(['name'=>$name,'password'=>$password]);//如果用户是第一次登陆则直接注册。
+            $this->store([ 'name'=>$name,'password'=>$password,'ip'=>$request->ip() ]);//如果用户是第一次登陆则直接注册。
         }
         return $this->login($request);
     }
@@ -56,7 +57,7 @@ class ChatLoginController extends Controller
 
     protected function guard()
     {
-        return auth()->guard('chat');
+        return Auth::guard('chat');
     }
 
     public function username()
@@ -68,6 +69,8 @@ class ChatLoginController extends Controller
         $userModel = new ChatUser;
         $userModel->name     = $data['name'];
         $userModel->password = bcrypt($data['password']);
+        $userModel->ip       = $data['ip'];
+        $userModel->avatar   = 'images/avatar/f1/f_'.rand(1,12).'.jpg';
         return  $userModel->save();      
 
     }   
@@ -81,16 +84,31 @@ class ChatLoginController extends Controller
         return $request->ajax() || $request->wantsJson() ? 
             response()->json([
                 'code' => 200,
-                'message' => 'Login Success!',
+                'msg' => 'Login Success!',
                 'data' => [],
             ]) : redirect()->intended($this->redirectPath());
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        if(  $request->ajax() || $request->wantsJson() ){
+            return response()->json([
+                'code' => 301,
+                'msg' => '密码出错!',
+                'data' => [],
+            ]);
+        }else{
+            throw ValidationException::withMessages([
+                $this->username() => [trans('auth.failed')],
+            ]);           
+        }
     }
 
     public function logout(Request $request)
     {
         $this->guard()->logout();
 
-        $request->session()->invalidate();
+        $request->session()->invalidate();//多表用户登陆,这里会出问题
 
         return redirect($this->redirectTo);
     }

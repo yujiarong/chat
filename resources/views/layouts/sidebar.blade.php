@@ -96,14 +96,14 @@
                                     <li>
                                         <a href="#">
                                             <i class="demo-pli-split-vertical-2"></i>
-                                            <span class="menu-title">模块</span>
+                                            <span class="menu-title">Chat</span>
                                             <i class="arrow"></i>
                                         </a>
                         
                                         <!--Submenu-->
                                         <ul class="collapse">
-                                            <li><a href="#">子模块1</a></li>
-                                            <li><a href="#">子模块2</a></li>
+                                            <li class="{{ active_class(Active::checkUriPattern('chat/user/*') ,'active-link active') }}"><a href="{{ route('chat.user.index') }}">用户管理 </a></li>
+                                            <li class="{{ active_class(Active::checkUriPattern('chat/room/*') ,'active-link active') }}"><a href="{{ route('chat.room.index') }}">聊天室管理 </a></li>
                                             
                                         </ul>
                                     </li>

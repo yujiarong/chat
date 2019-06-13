@@ -21,6 +21,15 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        Schema::create('chat_users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('password');
+            $table->string('avatar')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -31,5 +40,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('chat_users');
     }
 }

@@ -89,7 +89,7 @@ $(document).on('nifty.ready', function() {
     // http://www.datatables.net/
     // =================================================================
 
-    $.fn.DataTable.ext.pager.numbers_length = 5;
+    // $.fn.DataTable.ext.pager.numbers_length = 5;
 
 
     // Basic Data Tables with responsive plugin

@@ -1,8 +1,8 @@
 <?php
-$data = '{"robotId":"webbot","userId":"07ea8f616912419ba34cd1828d0c9bf7","sessionId":"ef19b93caf3a4525a22f49f0c0476276","type":"openresp","body":{"status":1}}{"robotId":"webbot","userId":"07ea8f616912419ba34cd1828d0c9bf7","sessionId":"ef19b93caf3a4525a22f49f0c0476276","type":"updaterobot","body":{"displayName":"小i机器人"}}{"robotId":"webbot","userId":"07ea8f616912419ba34cd1828d0c9bf7","sessionId":"ef19b93caf3a4525a22f49f0c0476276","type":"ex","body":{"name":"initconfig","data":{"homeP4Path":"home/index.html","inputPrompt":"请在这里输入您的消息","helpP4Path":"http://www.xiaoi.com","messageDateFormat":"HH:mm:ss","speechAddr":"","dn":"小i机器人","speechEnabled":"false"}}}{"robotId":"webbot","userId":"07ea8f616912419ba34cd1828d0c9bf7","sessionId":"ef19b93caf3a4525a22f49f0c0476276","type":"txt","body":{"fontStyle":0,"fontColor":0,"content":"Hi，我是小i机器人，我可以查天气，讲笑话，订机票哦~ 除此之外还有几十项实用好玩的功能哦~ 快来试试吧\n\r\n","emoticons":{}}}{"robotId":"webbot","userId":"07ea8f616912419ba34cd1828d0c9bf7","sessionId":"ef19b93caf3a4525a22f49f0c0476276","type":"txt","body":{"fontStyle":0,"fontColor":0,"content":"高考，说大不大，说小不小的一件事情，不要让它成为遗憾，要做就让它璀璨。小i机器人给您几条建议：1.规划自己的作息时间；2.饮食规划要得当；3.平常心对待；4.一切与考试无关的事情都不要去想，所有的事情在高考这个决定你命运的事情面前都是渺小的\r\n","emoticons":{}}}';
-$pattern = '/content":"(.+)"/iU';
-$data = preg_match_all ($pattern, $data,$matches);
-print_r($matches);
+$data = '@小爱   ';
+
+list(,$content) =  preg_split("/[\s]+/", $data);
+var_dump($content);
 exit();
 
 /**

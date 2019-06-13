@@ -11,10 +11,7 @@ define("DOMAIN","http://10.201.10.242:9090/");
 /*房间配置*/
 return [
     'rooms'=>[
-        'a' => 'sw交流组',
-        'b' => 'php交流组',
-        'c' => 'go交流组',
-
+        'a' => '扯蛋大群',
     ],
     'domain'=>DOMAIN,
 

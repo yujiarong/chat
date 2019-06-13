@@ -30,7 +30,7 @@ Route::get('/aichat', 'HomeController@aichat')->name('aichat');
 Route::post('/chat_login', 'Auth\ChatLoginController@registerLogin')->name('chat.login');
 Route::post('/chat_logout', 'Auth\ChatLoginController@logout')->name('chat.logout');
 Route::group(['middleware' => 'auth' ], function() {
-	Route::get('/', 'HomeController@index')->name('/');
+	Route::get('/', 'HomeController@index')->name('dashboard');
 	Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 	includeRouteFiles(__DIR__.DIRECTORY_SEPARATOR.'Backend'.DIRECTORY_SEPARATOR);
 });

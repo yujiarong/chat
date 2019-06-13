@@ -15,7 +15,6 @@
         "overtrue/socialite": "^2.0",
         "paragonie/random_compat": "2.*",
         "php-amqplib/php-amqplib": "2.6.1",
-        "sevenshi/serverchan": "^1.0",
         "spatie/laravel-permission": "^2.28",
         "yajra/laravel-datatables-oracle": "^8.13"
     },
