@@ -30,7 +30,9 @@ class HomeController extends Controller
     }
 
     public function chat(){
-        return view('index');
+        $data = ['domain'=>env('DOMAIN'),'wsserver'=>env('WS_SERVER')];
+
+        return view('index',$data);
     }
 
     public function aichat(Request $request){

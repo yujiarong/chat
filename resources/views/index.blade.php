@@ -89,15 +89,16 @@
 <div class="carrousel"> <span class="close entypo-cancel"></span>
     <div class="wrapper"> <img src="{{asset('images/noimg.png')}}" /> </div>
 </div>
-<script src="{{asset('js/init.js')}}"></script>
+{{-- <script src="{{asset('js/init.js')}}"></script> --}}
 <script src="{{asset('js/jquery.min.js')}}"></script>
-<script src="{{asset('js/face.js?v=33458')}}"></script>
-<script src="{{asset('js/create.div.js?v=17')}}"></script>
-<script src="{{asset('js/chat.script.js?v=34')}}"></script>
-<script src="{{asset('js/functions.js?v=2115')}}"></script>
-<script src="{{asset('js/xlyjs.js?v=215')}}"></script>
+
 <script type="text/javascript">
+var config = {
+    'domain' : "{{ $domain }}",
+    'wsserver' : "{{ $wsserver }}",
+}    
 $(document).ready(function(){
+
     @if( Auth::guard('chat')->user() )
         window.localStorage.dologin = 1;
         window.localStorage.name = '{{ Auth::guard('chat')->user()->name}}';
@@ -106,6 +107,11 @@ $(document).ready(function(){
 });    
 </script> 
 
+<script src="{{asset('js/face.js?v=33458')}}"></script>
+<script src="{{asset('js/create.div.js?v=17')}}"></script>
+<script src="{{asset('js/chat.script.js?v=34')}}"></script>
+<script src="{{asset('js/functions.js?v=2115')}}"></script>
+<script src="{{asset('js/xlyjs.js?v=215')}}"></script>
 </body>
 </html>
 
