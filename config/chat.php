@@ -6,7 +6,7 @@
  * Time: 16:58
  */
 
-define("DOMAIN","http://10.201.10.242:9090/");
+define("DOMAIN",env('JS_DOMIND'));
 
 /*房间配置*/
 return [

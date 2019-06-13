@@ -74,7 +74,7 @@ class ChatService
         $pushMsg['data']['roomid'] = $data['roomid'];
         $pushMsg['data']['fd'] = $data['fd'];
         $pushMsg['data']['name'] = $data['params']['name'];
-        $pushMsg['data']['avatar'] = $domain.$data['params']['avatar'];
+        $pushMsg['data']['avatar'] = $domain.'/'.$data['params']['avatar'];
         $pushMsg['data']['time'] = date("H:i",time());
         //增加房间的名字
         $pushMsg['data']['roomname'] = config('chat.rooms')[$data['roomid']];
