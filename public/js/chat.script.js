@@ -118,7 +118,6 @@ var chat = {
 			if( isLogin ) {
 				var name   = chat.data.storage.getItem("name");
 				var avatar = chat.data.storage.getItem("avatar");	
-				// var email =  chat.data.storage.getItem("password");
 				var json = {"type": 1,"name": name,"avatar": avatar,'roomid':'a'};
 				chat.wsSend(JSON.stringify(json));
 				chat.data.login = true;

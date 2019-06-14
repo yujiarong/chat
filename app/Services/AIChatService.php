@@ -21,7 +21,7 @@ class AIChatService extends BaseService
 		$response = $client->get($url);
 		$body     = $response->getBody();
 		$data     = $body->getContents();
-		$pattern = '/content":"(.+)"/iU';
+		$pattern = '/content":"(.+)","/iU';
 		$data = preg_match_all($pattern, $data,$matches);
 		if(empty($matches[0])){
 			return '小I同学 解析失败';
